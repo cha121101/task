@@ -29,7 +29,7 @@
         $employeepassword = $_POST['employeepassword'];
        
 
-        $getposition=""; $getname= ""; $getpassword="";
+        $getposition=""; $getname= ""; $getpassword=""; $loginname = "";
         foreach($employees as $arrays){
             
             foreach ($arrays as $keys => $values){
@@ -46,13 +46,15 @@
             if($getposition != $employeeposition  ||  $getname != $employeename  ||  $getpassword != $employeepassword){
                 //no code here.
             }else{
+               $loginname = $getname;   
                $isSuccess = true;
             }
             }
-            if($isSuccess == true){               
-                echo '<div class="alert alert-success w-50 p-3 mx-auto">Welcome to the system ',ucfirst($getname),'<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a> </div>';
+            if($isSuccess == true){         
+                echo '<div class="alert alert-success w-50 p-3 mx-auto">Welcome to the system ',ucfirst($loginname),'<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a> </div>';
                 $isSuccess = false;
             }else{
+                $loginname = "";
                 $isSuccess = false;
                 echo '<div class="alert alert-danger w-50 p-3 mx-auto">You Entered the wrong password<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a> </div>';
             }
